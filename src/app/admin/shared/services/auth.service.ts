@@ -5,7 +5,9 @@ import { Observable, Subject, throwError } from "rxjs";
 import {catchError, tap} from "rxjs/operators"
 import { User, FbAuthResponse} from "../../shared/interfaces";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService{
 
   public error$: Subject<string> = new Subject<string>()
@@ -67,6 +69,5 @@ get token(): string | null {
     } else {
       localStorage.clear()
     }
-
   }
 }

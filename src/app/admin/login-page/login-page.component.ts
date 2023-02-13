@@ -26,6 +26,8 @@ ngOnInit(): void {
   this.route.queryParams.subscribe((params:Params)=>{
     if(params['loginAgain']){
       this.message = 'Please entry'
+    } else if(params['authFailed']) {
+      this.message = 'Session exp'
     }
   })
   this.form = new FormGroup({
@@ -48,7 +50,7 @@ submit(){
     this.submitted = false
   },
   ()=>{
-    /* this.submitted = false */
+    this.submitted = false
   })
 }
 
