@@ -1,19 +1,22 @@
-<div class="post">
-  <div class="header">
-    <h1>Post title</h1>
+<div *ngIf="post$ | async as post;else loading">
+  <div class="post">
+    <div class="header">
+      <h1>{{post.title}}</h1>
 
-    <button routerLink="/" class="btn btn-link">To main</button>
-  </div>
+      <button routerLink="/" class="btn btn-link">To main</button>
+    </div>
 
-  <div class="info">
-    <strong>Author</strong>
-    <small>Date</small>
-  </div>
-  <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quidem fugiat numquam eveniet illum deleniti ut, saepe placeat, iste totam, rem aliquam. Quia rem soluta, laborum quisquam asperiores consequuntur impedit amet quae excepturi cum itaque autem expedita est, odit blanditiis quas possimus. Quis atque totam ipsum perspiciatis nobis non doloribus.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quidem fugiat numquam eveniet illum deleniti ut, saepe placeat, iste totam, rem aliquam. Quia rem soluta, laborum quisquam asperiores consequuntur impedit amet quae excepturi cum itaque autem expedita est, odit blanditiis quas possimus. Quis atque totam ipsum perspiciatis nobis non doloribus.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quidem fugiat numquam eveniet illum deleniti ut, saepe placeat, iste totam, rem aliquam. Quia rem soluta, laborum quisquam asperiores consequuntur impedit amet quae excepturi cum itaque autem expedita est, odit blanditiis quas possimus. Quis atque totam ipsum perspiciatis nobis non doloribus.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quidem fugiat numquam eveniet illum deleniti ut, saepe placeat, iste totam, rem aliquam. Quia rem soluta, laborum quisquam asperiores consequuntur impedit amet quae excepturi cum itaque autem expedita est, odit blanditiis quas possimus. Quis atque totam ipsum perspiciatis nobis non doloribus.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quidem fugiat numquam eveniet illum deleniti ut, saepe placeat, iste totam, rem aliquam. Quia rem soluta, laborum quisquam asperiores consequuntur impedit amet quae excepturi cum itaque autem expedita est, odit blanditiis quas possimus. Quis atque totam ipsum perspiciatis nobis non doloribus.</p>
+    <div class="info">
+      <strong>{{post.author}}</strong>
+      <small>{{post.date | date:'medium'}}</small>
+    </div>
+    <div>
+      <quill-view-html [content]="post.text"></quill-view-html>
+    </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <p class="text-center">LOADING ...</p>
+</ng-template>
+

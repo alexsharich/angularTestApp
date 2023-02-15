@@ -11,7 +11,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule} from './admin/shared/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './admin/shared/auth.interceptor';
+import { CommonModule } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import ruLocale from '@angular/common/locales/ru';
 
+
+registerLocaleData(ruLocale,'ru')
 
 /* const INTERCEPTOR_PROVIDER:Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -32,7 +37,8 @@ import { AuthInterceptor } from './admin/shared/auth.interceptor';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    CommonModule
   ],
   providers: [/* INTERCEPTOR_PROVIDER */],
   bootstrap: [AppComponent]
